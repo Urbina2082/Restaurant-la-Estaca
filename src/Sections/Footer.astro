@@ -1,0 +1,197 @@
+---
+const navigation = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Menú", href: "#menu" },
+  { label: "Sucursales", href: "#sucursales" },
+  { label: "Reseñas", href: "#resenas" },
+  { label: "Galería", href: "#galeria" },
+  { label: "Promociones", href: "#promociones" },
+  { label: "Contacto", href: "#contacto" }
+];
+
+const socialLinks = [
+  { name: "Instagram", href: "https://www.instagram.com/restlaestaca/" },
+  { name: "Facebook", href: "https://www.facebook.com/laestaca.web?locale=es_LA" },
+  { name: "TikTok", href: "https://www.tiktok.com/@laestacasabinas" },
+  
+];
+
+const mapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=La+Estaca+Sabinas+Coahuila";
+
+const whatsappUrl = "#contacto";
+const year = new Date().getFullYear();
+---
+
+<footer class="relative bg-[#17100b] px-5 pb-7 pt-12 text-white sm:px-8 sm:pt-14 lg:px-12">
+
+  <div class="mx-auto max-w-[1120px]">
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_1fr] lg:gap-16">
+
+      <!-- IDENTIDAD -->
+      <div>
+
+        <a href="#inicio" class="inline-flex items-center gap-3">
+          <img
+            src="/logo.avif"
+            alt="La Estaca"
+            class="h-10 w-10 rounded-full object-contain"
+            loading="lazy"
+          />
+
+          <div>
+            <h2
+              class="text-base font-black text-white"
+              style="font-family: 'Anton', sans-serif;"
+            >
+              La Estaca
+            </h2>
+            <p class="text-[10px] text-white/45">
+              Restaurante · Sabinas, Coahuila
+            </p>
+          </div>
+        </a>
+
+        <p class="mt-5 max-w-[280px] text-xs leading-[1.8] text-white/50">
+          Carne, tradición y ese toque de La Estaca que hace que siempre quieras volver.
+        </p>
+
+      </div>
+
+      <!-- NAVEGACIÓN -->
+      <div>
+        <h3 class="mb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-white/35">
+          EXPLORA
+        </h3>
+
+        <nav class="flex flex-col items-start gap-2.5">
+          {navigation.map((item) => (
+            <a
+              href={item.href}
+              class="text-xs text-white/60 transition-colors hover:text-[#008e45]"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- CONTACTO Y REDES -->
+      <div>
+        <h3 class="mb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-white/35">
+          ENCUÉNTRANOS
+        </h3>
+
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657 13.414 20.9a2 2 0 0 1-2.828 0l-4.243-4.243a8 8 0 1 1 11.314 0Z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+          </svg>
+          Google Maps
+        </a>
+
+        <p class="mt-3 text-xs text-white/50">
+          WhatsApp: número por confirmar
+        </p>
+
+        <!-- REDES -->
+        <div class="mt-5 flex items-center gap-2.5">
+
+          {socialLinks.map((social, index) => (
+            <a
+              href={social.href}
+              target={index !== 3 ? "_blank" : undefined}
+              rel={index !== 3 ? "noopener noreferrer" : undefined}
+              aria-label={social.name}
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.09] text-white/60 transition-all hover:bg-[#00863d] hover:text-white"
+            >
+              {index === 0 && (
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
+                </svg>
+              )}
+
+              {index === 1 && (
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.8-.1-1.7-.2-2.6-.2-2.6 0-4.3 1.6-4.3 4.5V10H7v3h2.8v8h3.7Z"/>
+                </svg>
+              )}
+
+              {index === 2 && (
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.6 7.2a5.8 5.8 0 0 1-3.5-1.2V15a6 6 0 1 1-6-6c.3 0 .6 0 .9.1v3.3a2.8 2.8 0 1 0 2.1 2.7V3h3.3c.2 2 1.4 3.7 3.2 4.4v3.4Z"/>
+                </svg>
+              )}
+
+              {index === 3 && (
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20l1.3-4.3A8.4 8.4 0 1 1 20 11.5Z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 8.5c.5 2.5 2.5 4.5 5 5"/>
+                </svg>
+              )}
+            </a>
+          ))}
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIVISOR -->
+    <div class="my-8 border-t border-white/10"></div>
+
+    <!-- COPYRIGHT -->
+    <div class="flex flex-col justify-between gap-3 text-[10px] text-white/40 sm:flex-row sm:items-center">
+
+      <p>
+        © {year} La Estaca Restaurante. Todos los derechos reservados.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/privacidad" class="transition-colors hover:text-white">
+          Aviso de privacidad
+        </a>
+        <a href="/terminos" class="transition-colors hover:text-white">
+          Términos y condiciones
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+<!-- BOTÓN FLOTANTE: CÓMO LLEGAR -->
+<a
+  href={mapsUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="fixed bottom-20 right-4 z-40 flex items-center gap-2 rounded-full border border-white/30 bg-white/90 px-4 py-3 text-[11px] font-bold text-[#211b17] shadow-lg backdrop-blur-xl transition-transform hover:scale-105 sm:bottom-6 sm:right-20"
+>
+  <svg class="h-4 w-4 text-[#e45b49]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657 13.414 20.9a2 2 0 0 1-2.828 0l-4.243-4.243a8 8 0 1 1 11.314 0Z"/>
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+  </svg>
+  Cómo llegar
+</a>
+
+<!-- BOTÓN FLOTANTE: WHATSAPP -->
+<a
+  href={whatsappUrl}
+  aria-label="Contactar por WhatsApp"
+  class="fixed bottom-5 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#009b50] text-white shadow-lg transition-all hover:scale-110 hover:bg-[#00863d] sm:bottom-6 sm:right-5"
+>
+  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M20 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20l1.3-4.3A8.4 8.4 0 1 1 20 11.5Z"/>
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 8.5c.5 2.5 2.5 4.5 5 5"/>
+  </svg>
+</a>

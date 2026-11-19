@@ -1,0 +1,95 @@
+
+---
+const favorites = [
+  {
+    name: "TACOS DE ARRACHERA",
+    description: "Los más vendidos.",
+    image: "/images/favoritos/tacos-arrachera.jpg",
+    position: "center",
+  },
+  {
+    name: "TABLITAS DE FILETE",
+    description: "Dos piezas. Una decisión fácil.",
+    image: "/images/favoritos/tablitas-filete.jpg",
+    position: "center",
+  },
+  {
+    name: "PAPA LA PATRONA",
+    description: "Para cuando vienes con hambre.",
+    image: "/images/favoritos/papa-patrona.jpg",
+    position: "center",
+  },
+  {
+    name: "EL TACO TAPADO",
+    description: "Una experiencia para compartir.",
+    image: "/images/favoritos/taco-tapado.jpg",
+    position: "center",
+  },
+];
+---
+
+<section
+  id="favoritos"
+  class="relative overflow-hidden bg-[#faf9f5] px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+>
+  <div class="mx-auto max-w-[1120px]">
+
+    <!-- TÍTULO -->
+    <div class="mb-10 sm:mb-12">
+      <h2
+        class="text-[clamp(2.8rem,6vw,5rem)] font-black uppercase leading-[0.95] tracking-[-0.04em] text-[#211b17]"
+        style="font-family: 'Anton', sans-serif;"
+      >
+        LOS FAVORITOS
+        <span class="text-[#a9673d]">DE LA ESTACA</span>
+      </h2>
+    </div>
+
+    <!-- TARJETAS -->
+    <div class="grid grid-cols-2 items-start gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-5">
+
+      {favorites.map((item, index) => (
+        <article
+          class:list={[
+            "group relative isolate aspect-[0.72] overflow-hidden rounded-[22px] bg-[#211b17] sm:rounded-[26px] lg:rounded-[28px]",
+            index % 2 === 1 && "lg:mt-10"
+          ]}
+        >
+
+          <!-- Imagen -->
+          <img
+            src={item.image}
+            alt={item.name}
+            loading="lazy"
+            class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            style={`object-position: ${item.position};`}
+          />
+
+          <!-- Degradado -->
+          <div
+            class="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/10 to-transparent"
+          ></div>
+
+          <!-- Contenido -->
+          <div class="absolute inset-x-0 bottom-0 p-3 sm:p-4 lg:p-4">
+
+            <h3
+              class="text-xs font-black uppercase leading-tight text-white sm:text-sm lg:text-base"
+              style="font-family: 'Anton', sans-serif;"
+            >
+              {item.name}
+            </h3>
+
+            <p class="mt-1 text-[10px] leading-relaxed text-white/75 sm:text-xs">
+              {item.description}
+            </p>
+
+          </div>
+
+        </article>
+      ))}
+
+    </div>
+
+  </div>
+</section>

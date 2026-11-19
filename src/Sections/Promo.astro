@@ -1,0 +1,142 @@
+
+---
+const promotions = [
+  {
+    image: "/images/promociones/promocion-casa.jpg",
+    alt: "Carne a la parrilla",
+    tag: "PROMOCIÓN DE LA CASA",
+    description: "Algo bueno siempre tiene una razón para volver.",
+    benefit: "Beneficio por definir",
+    validity: "Vigencia por confirmar",
+    active: true,
+    link: "#contacto"
+  },
+  {
+    image: "/images/promociones/promocion-platillo.jpg",
+    alt: "Platillo especial de La Estaca",
+    tag: "PROMOCIÓN POR DEFINIR",
+    description: "Espacio editable para la promoción que quieras destacar esta temporada.",
+    benefit: "Precio por definir",
+    validity: "Vigencia por confirmar",
+    active: true,
+    link: "#contacto"
+  },
+  {
+    image: "/images/promociones/promocion-bebidas.jpg",
+    alt: "Bebidas de La Estaca",
+    tag: "PROMOCIÓN POR DEFINIR",
+    description: "Espacio editable para promociones de bebidas o botanas.",
+    benefit: "Beneficio por definir",
+    validity: "Vigencia por confirmar",
+    active: true,
+    link: "#contacto"
+  }
+];
+---
+
+<section
+  id="promociones"
+  class="relative overflow-hidden bg-[#f7f5ed] px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+>
+  <div class="mx-auto max-w-[1140px]">
+
+    <!-- ENCABEZADO -->
+    <div class="mb-9 flex flex-col justify-between gap-4 sm:mb-10 md:flex-row md:items-end">
+
+      <div>
+        <span class="mb-2 block text-[10px] font-bold uppercase tracking-[0.3em] text-[#a9673d]">
+          ALGO BUENO TE ESPERA
+        </span>
+
+        <h2
+          class="text-[clamp(2.8rem,6vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-[#211b17]"
+          style="font-family: 'Anton', sans-serif;"
+        >
+          HOY SE ANTOJA
+          <span class="text-[#d94425]"> MÁS</span>
+        </h2>
+      </div>
+
+      <p class="max-w-[290px] text-xs leading-5 text-[#91877d] sm:text-sm">
+        Promociones especiales para disfrutar en La Estaca. Consulta nuestras ofertas disponibles.
+      </p>
+
+    </div>
+
+    <!-- TARJETAS -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+
+      {promotions.map((promo) => (
+        <article
+          class="group flex flex-col overflow-hidden rounded-[24px] border border-[#eeeae1] bg-[#fffefa] shadow-[0_14px_35px_rgba(45,35,20,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(45,35,20,0.12)]"
+        >
+
+          <!-- IMAGEN -->
+          <div class="relative aspect-[16/9] overflow-hidden bg-[#e8dfd3]">
+            <img
+              src={promo.image}
+              alt={promo.alt}
+              loading="lazy"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+
+            {promo.active && (
+              <div class="absolute left-4 top-4 rounded-full border border-white/30 bg-black/35 px-3 py-1 text-[9px] font-bold tracking-[0.15em] text-white backdrop-blur-md">
+                LA ESTACA
+              </div>
+            )}
+          </div>
+
+          <!-- INFORMACIÓN -->
+          <div class="flex flex-1 flex-col p-5 sm:p-6">
+
+            <h3
+              class="text-sm font-black uppercase leading-tight text-[#211b17]"
+              style="font-family: 'Anton', sans-serif;"
+            >
+              {promo.tag}
+            </h3>
+
+            <p class="mt-2 min-h-[42px] text-xs leading-[1.7] text-[#928980] sm:text-sm">
+              {promo.description}
+            </p>
+
+            <!-- BENEFICIO -->
+            <div class="mt-3">
+              <p
+                class="text-lg font-black leading-tight text-[#00863d] sm:text-xl"
+                style="font-family: 'Anton', sans-serif;"
+              >
+                {promo.benefit}
+              </p>
+
+              <p class="mt-1 text-[10px] text-[#a49a90]">
+                {promo.validity}
+              </p>
+            </div>
+
+            <!-- BOTÓN -->
+            <a
+              href={promo.link}
+              class="mt-5 flex min-h-[43px] w-full items-center justify-center rounded-full bg-[#211b17] px-5 text-[10px] font-bold tracking-[0.17em] text-white transition-all duration-300 hover:bg-[#00863d]"
+            >
+              QUIERO IR
+              <svg
+                class="ml-2 h-3.5 w-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" />
+              </svg>
+            </a>
+
+          </div>
+        </article>
+      ))}
+
+    </div>
+
+  </div>
+</section>

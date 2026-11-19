@@ -1,0 +1,81 @@
+
+---
+const backgroundImage = "/fe.avif";
+
+const actions = [
+  {
+    label: "VER MENÚ",
+    href: "#menu",
+    style: "primary"
+  },
+  {
+    label: "CÓMO LLEGAR",
+    href: "#sucursales",
+    style: "secondary"
+  },
+  {
+    label: "CONTACTAR",
+    href: "#contacto",
+    style: "outline"
+  }
+];
+---
+
+<section
+  id="cta"
+  class="relative isolate flex min-h-[340px] items-center justify-center overflow-hidden px-5 py-20 sm:min-h-[390px] sm:px-8 lg:min-h-[420px]"
+>
+  <!-- IMAGEN DE FONDO -->
+  <div class="absolute inset-0 -z-30">
+    <img
+      src={backgroundImage}
+      alt="Carne a la parrilla en La Estaca"
+      loading="lazy"
+      class="h-full w-full object-cover object-center"
+    />
+  </div>
+
+  <!-- OSCURECIMIENTO -->
+  <div class="absolute inset-0 -z-20 bg-black/65"></div>
+
+  <!-- DEGRADADO -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/15 to-black/65"></div>
+
+  <!-- CONTENIDO -->
+  <div class="mx-auto flex w-full max-w-[1000px] flex-col items-center text-center">
+
+    <h2
+      class="text-[clamp(3rem,8vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-white"
+      style="font-family: 'Anton', sans-serif;"
+    >
+      ¿YA SE TE ANTOJÓ?
+    </h2>
+
+    <p class="mt-4 text-sm font-semibold tracking-[0.15em] text-white/80 sm:text-base">
+      Entonces ya sabes dónde.
+    </p>
+
+    <!-- BOTONES -->
+    <div class="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:gap-3">
+
+      {actions.map((action) => (
+        <a
+          href={action.href}
+          class:list={[
+            "flex min-h-[46px] w-full items-center justify-center rounded-full px-7 text-[10px] font-bold tracking-[0.17em] transition-all duration-300 sm:w-auto",
+            action.style === "primary" &&
+              "border border-[#00863d] bg-[#00863d] text-white hover:border-[#006e32] hover:bg-[#006e32]",
+            action.style === "secondary" &&
+              "border border-white/25 bg-black/35 text-white backdrop-blur-md hover:bg-white/15",
+            action.style === "outline" &&
+              "border border-white/40 bg-transparent text-white hover:bg-white hover:text-[#211b17]"
+          ]}
+        >
+          {action.label}
+        </a>
+      ))}
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,163 @@
+---
+const favoritos = [
+  {
+    nombre: "Tacos de Arrachera",
+    descripcion: "Los más vendidos.",
+    precio: "$235",
+    imagen: "/9.avif",
+    etiqueta: "EL FAVORITO",
+  },
+  {
+    nombre: "Tablitas de Filete",
+    descripcion: "Dos piezas exquisitas. Una decisión fácil.",
+    precio: "$450",
+    imagen: "/fav.avif",
+    etiqueta: "DE LA CASA",
+  },
+  {
+    nombre: "Papa La Patrona",
+    descripcion: "Para cuando vienes con hambre.",
+    precio: "$315",
+    imagen: "/fav.avif",
+    etiqueta: "RECOMENDACIÓN",
+  },
+  {
+    nombre: "El Taco Tapado",
+    descripcion: "Una experiencia para compartir.",
+    precio: "$550",
+    imagen: "/fav.avif",
+    etiqueta: "ESPECIAL",
+  },
+];
+---
+
+<section class="bg-[#f8f6ef] py-20 md:py-28" id="favoritos">
+  <div class="mx-auto max-w-7xl px-5 md:px-10">
+
+    <!-- ENCABEZADO -->
+    <div class="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+      <div>
+        <span class="mb-4 block text-[10px] font-bold uppercase tracking-[0.35em] text-[#a9673c]">
+          UNA SELECCIÓN ESPECIAL
+        </span>
+
+        <h2 class="font-anton text-4xl uppercase leading-[0.95] tracking-tight text-[#211a16] sm:text-5xl lg:text-6xl">
+          LOS FAVORITOS 
+          <span class="text-[#a9673c]">   DE LA ESTACA</span>
+        </h2>
+      </div>
+
+      <div class="max-w-xs">
+        <p class="text-sm leading-6 text-[#8d8278]">
+          Hay sabores que siempre merecen regresar a la mesa. Descubre algunos de nuestros platillos destacados.
+        </p>
+        <a
+          href="#menu"
+          class="mt-4 inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#00843d] transition-colors hover:text-[#a9673c]"
+        >
+          DESCUBRIR EL MENÚ COMPLETO
+          <span class="text-base">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- GALERÍA PREMIUM -->
+    <div class="grid grid-cols-2 items-start gap-3 md:grid-cols-4 md:gap-5 lg:gap-6">
+      {favoritos.map((dish, index) => (
+        <article
+          class:list={[
+            "favorite-card group relative block select-none overflow-hidden rounded-[1.2rem] bg-[#211a16] md:rounded-[1.6rem]",
+            index % 2 === 1 ? "mt-7 md:mt-12" : "mt-0",
+          ]}
+          style={`--delay: ${index * 100}ms`}
+        >
+          <div class="relative aspect-[3/4] overflow-hidden">
+            <img
+              src={dish.imagen}
+              alt={dish.nombre}
+              loading="lazy"
+              draggable="false"
+              class="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+            />
+
+            <!-- OSCURECIMIENTO -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-black/15 transition-opacity duration-500 group-hover:from-black/90"></div>
+
+            <!-- ETIQUETA -->
+            <span class="absolute left-3 top-3 rounded-full border border-white/30 bg-black/20 px-2.5 py-1.5 text-[8px] font-bold tracking-[0.16em] text-white backdrop-blur-md sm:left-5 sm:top-5 sm:text-[9px]">
+              {dish.etiqueta}
+            </span>
+
+            <!-- INFORMACIÓN -->
+            <div class="absolute inset-x-0 bottom-0 p-3 sm:p-5 lg:p-6">
+              <div class="mb-2 flex items-center justify-between gap-2">
+                <span class="text-[8px] font-semibold uppercase tracking-[0.2em] text-white/60 sm:text-[9px]">
+                  LA ESTACA
+                </span>
+                <span class="font-anton text-sm text-white sm:text-lg">
+                  {dish.precio}
+                </span>
+              </div>
+
+              <h3 class="font-anton text-lg uppercase leading-tight text-white sm:text-2xl lg:text-3xl">
+                {dish.nombre}
+              </h3>
+
+              <p class="mt-1 text-[10px] leading-4 text-white/70 sm:text-xs sm:leading-5">
+                {dish.descripcion}
+              </p>
+            </div>
+          </div>
+
+          <!-- BRILLO SUTIL -->
+          <div class="pointer-events-none absolute inset-0 rounded-[inherit] border border-white/10 transition-colors duration-500 group-hover:border-white/35"></div>
+        </article>
+      ))}
+    </div>
+
+    <!-- PIE DE SECCIÓN -->
+    <div class="mt-12 flex flex-col items-center justify-between gap-5 border-t border-[#211a16]/10 pt-7 sm:flex-row">
+      <p class="text-center text-[10px] uppercase tracking-[0.18em] text-[#a0968b] sm:text-left">
+        BUENOS MOMENTOS · GRANDES SABORES · LA ESTACA
+      </p>
+
+      <a
+        href="#menu"
+        class="rounded-full bg-[#211a16] px-8 py-4 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-[#00843d] hover:shadow-lg"
+      >
+        VER TODA LA CARTA →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .favorite-card {
+    opacity: 0;
+    animation: favorite-appear 0.8s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes favorite-appear {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .favorite-card {
+      animation: none;
+      opacity: 1;
+    }
+
+    .favorite-card img {
+      transition: none;
+    }
+  }
+</style>

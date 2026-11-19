@@ -1,0 +1,643 @@
+
+---
+const categories = [
+  {
+    id: "pal-centro",
+    label: "PAL CENTRO",
+    items: [
+      {
+        name: "ACERITO QUESO FLAMEADO",
+        price: "$240",
+        description: "De chorizo, con tortillas de maíz o de harina si gusta. El tradicional para empezar, con queso de la región, del bueno. Pa' botanear.",
+        image: "acerito-queso-flameado"
+      },
+      {
+        name: "BONELESS (SIN HUESO)",
+        price: "$265",
+        description: "Acompañadas con papas, ranch y salsa buffalo.",
+        image: "boneless"
+      },
+      {
+        name: "BOTANA MIXTA",
+        price: "$320",
+        description: "Boneless, aros de cebolla, papas fritas y dedos de queso acompañados de ranch y salsa picosita. ¡Ésta es para toda ocasión!",
+        image: "botana-mixta",
+        recommended: true
+      },
+      {
+        name: 'NACHOS "LA ESTACA"',
+        price: "$240",
+        description: "Diferentes a todos los demás, ¡pruébalos! Los originales de aquí.",
+        image: "nachos-la-estaca",
+        recommended: true
+      },
+      {
+        name: "GUACAMOLE",
+        price: "$185",
+        description: "El clásico con pico de gallo.",
+        image: "guacamole"
+      },
+      {
+        name: "QUESO PANELA",
+        price: "$210",
+        description: "Pa' no engordar. Queso a la plancha bañado en salsa verde y nopalitos guisados.",
+        image: "queso-panela",
+        recommended: true
+      },
+      {
+        name: "CHICHARRÓN DE RIBEYE",
+        price: "$420",
+        description: "Medio kilo con hueso en un molcajete con guacamole y pico de gallo encima. Bien bueno... ¡Pruébalo!",
+        image: "chicharron-ribeye",
+        recommended: true
+      },
+      {
+        name: "SALCHICHA ASADA PA' PICAR",
+        price: "$110",
+        description: "Salchichas con aderezo a un lado pa' chopear, botanera.",
+        image: "salchicha-asada"
+      },
+      {
+        name: "COSTILLITAS DE ELOTE",
+        price: "$185",
+        description: "8 costillitas sazonadas de la casa con su aderezo especial.",
+        image: "costillitas-elote",
+        recommended: true,
+        isNew: true
+      }
+    ]
+  },
+  {
+    id: "de-la-casa",
+    label: "DE LA CASA",
+    items: [
+      {
+        name: "JALAPEÑOS LA GLORIA",
+        price: "$255",
+        description: "Cuatro chiles envueltos en tocino, rellenos de queso Philadelphia, con una cama de lechuga y pico de gallo.",
+        image: "jalapenos-gloria",
+        recommended: true
+      },
+      {
+        name: "CORTADILLO ESTACA",
+        price: "$350",
+        description: "De arrachera, acompañado de frijoles refritos en un acerito. Diferente a todos los demás.",
+        image: "cortadillo-estaca",
+        recommended: true
+      },
+      {
+        name: 'HAMBURGUESA "LA CLÁSICA"',
+        price: "$165",
+        description: "Pruébala, muy buena, con carne Angus acompañada de papas fritas.",
+        image: "hamburguesa-clasica",
+        recommended: true
+      },
+      {
+        name: 'HAMBURGUESA "LA CRUJIENTE" DE POLLO',
+        price: "$165",
+        description: "De pollo, pruébela, ¡bien buena!",
+        image: "hamburguesa-crujiente",
+        recommended: true
+      },
+      {
+        name: 'TORTA "LA ESTACA"',
+        price: "$235",
+        description: '350 g de carne asada tipo "Estaca" en pan blanco grande, bien llenadora.',
+        image: "torta-la-estaca",
+        recommended: true
+      },
+      {
+        name: "SOPA DE LA CASA DEL PATRÓN",
+        price: "$165",
+        description: "Sopa de fideo con frijolitos y trozos de arrachera. ¡Casera, bien buena!",
+        image: "sopa-patron",
+        recommended: true
+      },
+      {
+        name: 'QUESADILLAS "LA ESTACA"',
+        price: "$175",
+        description: "Orden de 4, cubiertas de cebolla guisada con tocino.",
+        image: "quesadillas-estaca",
+        recommended: true
+      },
+      {
+        name: "ENSALADA PINCHURRIENTA",
+        price: "$85",
+        description: "La clásica con lechuga, tomate, cebolla, aguacate y quesito panela.",
+        image: "ensalada-pinchurri enta",
+        recommended: true
+      },
+      {
+        name: 'PAPA "LA PATRONA"',
+        price: "$315",
+        description: "Carne preparada con cebolla, morrón y queso asadero, servida sobre una cama de papa. ¡Bien buena y llenadora! Pruébala.",
+        image: "papa-la-patrona",
+        recommended: true
+      }
+    ]
+  },
+  {
+    id: "carnes",
+    label: "LAS CARNES",
+    items: [
+      {
+        name: "TABLITAS DE FILETE · MEDIO KILO",
+        price: "$450",
+        description: "Dos piezas exquisitas, pruébelas, de lo mejor. Acompañadas con cebolla asada, elote y chilitos toreados.",
+        image: "tablitas-filete",
+        recommended: true
+      },
+      {
+        name: "RIB-EYE · MEDIO KILO",
+        price: "$420",
+        description: "Acompañado con cebolla asada, elote y chilitos toreados.",
+        image: "ribeye"
+      },
+      {
+        name: "PORTER HOUSE · 600 GRAMOS",
+        price: "$450",
+        description: "Acompañado con cebolla asada, elote y chilitos toreados. Pa' los de buen diente.",
+        image: "porter-house"
+      },
+      {
+        name: "NEW YORK · MEDIO KILO",
+        price: "$420",
+        description: "Acompañado con cebolla asada, elote y chilitos toreados.",
+        image: "new-york"
+      },
+      {
+        name: "AGUJAS NORTEÑAS · MEDIO KILO",
+        price: "$420",
+        description: "Acompañadas de cebolla asada, elote y chilitos toreados.",
+        image: "agujas-nortenas"
+      },
+      {
+        name: "SIRLOIN · 750 GRAMOS",
+        price: "$510",
+        description: "Acompañado de elote asado, cebolla asada y chiles toreados. ¡Bien bueno!",
+        image: "sirloin"
+      },
+      {
+        name: "FILETE TAMPIQUEÑA",
+        price: "$295",
+        description: "Filete a la parrilla bañado con salsa tampiqueña, acompañado de quesadillas, frijoles y guacamole.",
+        image: "filete-tampiquena"
+      }
+    ]
+  },
+  {
+    id: "pa-todos",
+    label: "PA TODOS",
+    items: [
+      {
+        name: "KILO DE ARRACHERA TAMPIQUEÑA",
+        price: "$880",
+        description: "1 kilo de arrachera con salsa tampiqueña, acompañada de 2 quesadillas, 1 salchicha para asar, guacamole y, si gusta, le servimos frijoles refritos.",
+        image: "kilo-arrachera-tampiquena"
+      },
+      {
+        name: "PARRILLADA SIRLOIN / ARRACHERA",
+        price: "$895",
+        description: "750 g de Sirloin y medio kilo de arrachera con cebolla asada, chiles toreados, 1 salchicha para asar y 2 quesadillas.",
+        image: "parrillada-sirloin-arrachera"
+      },
+      {
+        name: "ARRACHERA · MEDIO KILO",
+        price: "$530",
+        description: "Medio kilo de arrachera encebollada acompañada de papas fritas.",
+        image: "arrachera-medio-kilo"
+      },
+      {
+        name: "EL TACO TAPADO",
+        price: "$550",
+        description: "Medio kilo de arrachera encebollado con queso asadero gratinado, tapado con tortillas pa' taquear.",
+        image: "taco-tapado"
+      }
+    ]
+  },
+  {
+    id: "los-tacos",
+    label: "LOS TACOS",
+    items: [
+      {
+        name: "TACOS DE ARRACHERA",
+        price: "$235",
+        description: "4 tacos de arrachera con aguacate y zanahoria. ¡Los más vendidos!",
+        image: "tacos-arrachera",
+        recommended: true
+      },
+      {
+        name: "BURRITOS DE ARRACHERA",
+        price: "$285",
+        description: "2 burritos de arrachera acompañados de queso amarillo, en tortilla de harina, bien llenadores.",
+        image: "burritos-arrachera"
+      },
+      {
+        name: "ENCHILADAS SUIZAS",
+        price: "$190",
+        description: "Orden de 4, rellenas de pollo, en salsa verde y frijoles refritos.",
+        image: "enchiladas-suizas"
+      },
+      {
+        name: "TACOS DE SIRLOIN",
+        price: "$235",
+        description: "4 tacos de Sirloin con queso gratinado acompañados de cebolla asada y chile toreado. ¡Bien buenos!",
+        image: "tacos-sirloin",
+        recommended: true
+      },
+      {
+        name: "TACOS CHILACA",
+        price: "$285",
+        description: "Tres tacos de chilaca, rellenos de queso asadero y arrachera. ¡Bien buenos!",
+        image: "tacos-chilaca"
+      },
+      {
+        name: "TACOS DORADOS",
+        price: "$190",
+        description: "Cuatro tacos crujientes, los clásicos, acompañados de guacamole y pico de gallo.",
+        image: "tacos-dorados",
+        isNew: true
+      },
+      {
+        name: "TACOS DE LA CASA",
+        price: "$235",
+        description: "Cuatro tacos de carne asada acompañados de guacamole, cebolla asada y chile toreado.",
+        image: "tacos-de-la-casa",
+        isNew: true
+      }
+    ]
+  }
+];
+
+const notices = [
+  {
+    title: "PROPINA",
+    text: "Aquí en La Estaca, la propina no va incluida en su cuenta. Si el servicio fue de su agrado, los meseros le agradecen su propina."
+  },
+  {
+    title: "PROMOCIÓN DE CUMPLEAÑOS",
+    text: "Si cumples años te regalamos $200 (billete de doscientos pesos - Banco de México) de tu cuenta total.",
+    extra: "Solo mostrando tu identificación con foto. No aplica para llevar."
+  },
+  {
+    title: "POLÍTICAS DEL ESTABLECIMIENTO",
+    list: [
+      "Exija su ticket de compra, si no se lo dan su consumo es gratis.",
+      "Cualquier modificación a su platillo tendrá costo extra.",
+      "Los platillos son preparados en el momento en que usted los ordena, por lo que agradecemos su comprensión en el tiempo de entrega.",
+      "Grupos mayores a 10 personas: su servicio demorará más tiempo."
+    ]
+  }
+];
+
+const initialCategory = "carnes";
+---
+
+<section id="menu" class="bg-[#faf9f5] px-5 py-20 text-[#211b17] sm:px-8 sm:py-24 lg:px-12">
+  <div class="mx-auto max-w-[1120px]">
+
+    <!-- ENCABEZADO -->
+    <div class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <span class="mb-2 block text-[10px] font-bold uppercase tracking-[0.3em] text-[#ae754e]">
+          CARTA COMPLETA
+        </span>
+
+        <h2 class="text-5xl uppercase leading-none tracking-tight sm:text-6xl"
+          style="font-family: 'Anton', sans-serif;">
+          EL MENÚ
+        </h2>
+      </div>
+
+      <p class="max-w-[260px] text-xs leading-5 text-[#968d83]">
+        Precios en pesos mexicanos. Sujetos a cambio sin previo aviso.
+      </p>
+    </div>
+
+    <!-- CATEGORÍAS -->
+    <nav class="mb-8 flex gap-2 overflow-x-auto rounded-full border border-[#eeeae2] bg-[#fffefa] p-1.5 shadow-[0_10px_30px_rgba(50,40,20,0.03)]"
+      aria-label="Categorías del menú">
+
+      {categories.map((category) => (
+        <button
+          type="button"
+          data-menu-tab={category.id}
+          aria-pressed={category.id === initialCategory ? "true" : "false"}
+          class:list={[
+            "shrink-0 rounded-full px-5 py-3 text-[9px] font-bold tracking-[0.14em] transition-all duration-300 sm:px-6",
+            category.id === initialCategory
+              ? "bg-[#00863d] text-white"
+              : "text-[#827b72] hover:bg-[#f0eee6] hover:text-[#00863d]"
+          ]}
+        >
+          {category.label}
+        </button>
+      ))}
+    </nav>
+
+    <!-- CATEGORÍAS Y PLATILLOS -->
+    {categories.map((category) => (
+      <div
+        data-menu-panel={category.id}
+        class:list={[
+          "animate-[menuIn_.35s_ease]",
+          category.id !== initialCategory && "hidden"
+        ]}
+      >
+
+        <!-- AVISO ESPECIAL DE CORTES -->
+        {category.id === "carnes" && (
+          <div class="mb-7 flex gap-3 rounded-2xl border border-[#f4cfc4] bg-[#fff4f0] px-4 py-4 sm:items-center">
+            <svg class="mt-0.5 h-4 w-4 shrink-0 text-[#e64b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="9"/>
+              <path stroke-linecap="round" d="M12 11v5m0-8h.01"/>
+            </svg>
+
+            <p class="text-xs leading-5 text-[#80756d]">
+              <strong class="text-[#e64b35]">SUGERENCIA IMPORTANTE:</strong>
+              Estos son nuestros cortes calidad Angus. La recomendación de la casa es el término entre medio y 3/4.
+            </p>
+          </div>
+        )}
+
+        <div class="grid grid-cols-1 gap-x-10 gap-y-7 md:grid-cols-2 lg:gap-x-12 lg:gap-y-8">
+
+          {category.items.map((item) => (
+            <button
+              type="button"
+              data-menu-item
+              data-image={`/images/menu/${item.image}.webp`}
+              data-title={item.name}
+              data-price={item.price}
+              data-description={item.description}
+              aria-label={`Ver fotografía de ${item.name}`}
+              class="group w-full cursor-pointer text-left"
+            >
+
+              <!-- NOMBRE Y PRECIO -->
+              <div class="flex items-baseline gap-2">
+
+                <h3
+                  class="shrink-0 max-w-[80%] text-[13px] font-bold uppercase leading-tight text-[#29221d] transition-colors group-hover:text-[#00863d] sm:text-sm"
+                  style="font-family: 'Anton', sans-serif;"
+                >
+                  {item.name}
+                </h3>
+
+                <div class="min-w-[8px] flex-1 border-b border-dotted border-[#dcd6cc]"></div>
+
+                <span class="shrink-0 text-base font-black tracking-tight text-[#00863d] sm:text-lg">
+                  {item.price}
+                </span>
+              </div>
+
+              <!-- DESCRIPCIÓN -->
+              <p class="mt-2 text-[11px] leading-[1.7] text-[#928980] sm:text-xs">
+                {item.description}
+              </p>
+
+              <!-- ETIQUETAS -->
+              <div class="mt-2 flex flex-wrap items-center gap-2">
+
+                {item.recommended && (
+                  <span class="rounded-full bg-[#f1e9de] px-3 py-1 text-[8px] font-bold tracking-[0.13em] text-[#ad754b]">
+                    RECOMENDACIÓN DE LA CASA
+                  </span>
+                )}
+
+                {item.isNew && (
+                  <span class="rounded-full bg-[#e5f2e8] px-3 py-1 text-[8px] font-bold tracking-[0.13em] text-[#00863d]">
+                    NUEVO
+                  </span>
+                )}
+
+                <span class="inline-flex items-center gap-1 text-[9px] font-semibold text-[#a69a8c] transition-colors group-hover:text-[#00863d]">
+                  <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                    <rect x="3" y="3" width="18" height="18" rx="3"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 15-5-5L5 21"/>
+                  </svg>
+                  TOCA PARA VER LA FOTO
+                </span>
+
+              </div>
+
+            </button>
+          ))}
+
+        </div>
+      </div>
+    ))}
+
+    <!-- NOTA DE TÉRMINOS -->
+    <div class="mt-9 rounded-2xl border border-[#f4cfc4] bg-[#fff4f0] p-5 sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-wider text-[#df4d35]">
+        IMPORTANTE · TÉRMINO DE LOS CORTES
+      </p>
+      <p class="mt-2 text-xs leading-6 text-[#80756d]">
+        Estos son nuestros cortes calidad Angus. La recomendación de la casa es el término entre medio y 3/4. Si lo quiere bien cocido es responsabilidad de usted. Claro, en gustos se rompen géneros. ¡Buen provecho!
+      </p>
+    </div>
+
+    <!-- AVISOS Y POLÍTICAS -->
+    <div class="mt-20">
+      <div class="mb-8">
+        <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#ae754e]">
+          INFORMACIÓN IMPORTANTE
+        </span>
+        <h3 class="mt-2 text-3xl uppercase sm:text-4xl"
+          style="font-family: 'Anton', sans-serif;">
+          AVISOS Y NOTAS
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+        {notices.map((notice, index) => (
+          <article class:list={[
+            "rounded-[20px] border border-[#eeeae2] bg-[#fffefa] p-6",
+            index === 2 && "md:col-span-2"
+          ]}>
+            <h4 class="text-sm font-bold uppercase tracking-wide text-[#00863d]"
+              style="font-family: 'Anton', sans-serif;">
+              {notice.title}
+            </h4>
+
+            {notice.text && (
+              <p class="mt-3 text-xs leading-6 text-[#847b72]">
+                {notice.text}
+              </p>
+            )}
+
+            {notice.extra && (
+              <p class="mt-3 rounded-lg bg-[#f5eee4] p-3 text-[10px] font-bold uppercase leading-5 text-[#a66b40]">
+                {notice.extra}
+              </p>
+            )}
+
+            {notice.list && (
+              <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+                {notice.list.map((text) => (
+                  <li class="flex gap-2 text-xs leading-5 text-[#847b72]">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00863d]"></span>
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+
+      </div>
+    </div>
+
+    <!-- INFORMACIÓN FISCAL -->
+    <div class="mt-8 flex flex-col justify-between gap-2 border-t border-[#e8e3d9] pt-5 text-[10px] text-[#a49a90] sm:flex-row">
+      <p>Todos nuestros precios incluyen I.V.A.</p>
+      <p>Edición impresa: OCT/2026</p>
+      <p>Precios en pesos mexicanos (MXN).</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL DE FOTOGRAFÍA -->
+<div
+  id="menu-modal"
+  class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Fotografía del platillo"
+>
+  <div class="relative w-full max-w-[650px] overflow-hidden rounded-[24px] border border-white/10 bg-[#17100b] shadow-2xl">
+
+    <button
+      id="menu-modal-close"
+      type="button"
+      aria-label="Cerrar fotografía"
+      class="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition hover:bg-[#00863d]"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" d="m18 6-12 12M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="relative flex aspect-[4/3] items-center justify-center bg-[#241b14]">
+      <img
+        id="menu-modal-image"
+        src=""
+        alt=""
+        class="h-full w-full object-cover"
+      />
+      <p id="menu-modal-fallback" class="absolute hidden text-sm text-white/60">
+        Fotografía próximamente
+      </p>
+    </div>
+
+    <div class="p-5 sm:p-7">
+      <span class="text-[9px] font-bold tracking-[0.25em] text-[#b98457]">
+        LA ESTACA · SABINAS
+      </span>
+
+      <div class="mt-2 flex items-start justify-between gap-3">
+        <div>
+          <h3 id="menu-modal-title" class="text-xl uppercase text-white sm:text-2xl"
+            style="font-family: 'Anton', sans-serif;">
+          </h3>
+          <p id="menu-modal-description" class="mt-2 text-xs leading-5 text-white/50"></p>
+        </div>
+
+        <span id="menu-modal-price" class="shrink-0 text-xl font-black text-[#16a454]"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  @keyframes menuIn {
+    from { opacity: 0; transform: translateY(7px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll("[data-menu-tab]");
+  const panels = document.querySelectorAll("[data-menu-panel]");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const selected = tab.getAttribute("data-menu-tab");
+
+      tabs.forEach((button) => {
+        const active = button === tab;
+        button.classList.toggle("bg-[#00863d]", active);
+        button.classList.toggle("text-white", active);
+        button.classList.toggle("text-[#827b72]", !active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle(
+          "hidden",
+          panel.getAttribute("data-menu-panel") !== selected
+        );
+      });
+    });
+  });
+
+  const modal = document.getElementById("menu-modal");
+  const modalImage = document.getElementById("menu-modal-image");
+  const modalFallback = document.getElementById("menu-modal-fallback");
+  const modalTitle = document.getElementById("menu-modal-title");
+  const modalPrice = document.getElementById("menu-modal-price");
+  const modalDescription = document.getElementById("menu-modal-description");
+  const closeButton = document.getElementById("menu-modal-close");
+
+  let previousFocus = null;
+
+  function closeMenuModal() {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+    modalImage.src = "";
+    if (previousFocus) previousFocus.focus();
+  }
+
+  document.querySelectorAll("[data-menu-item]").forEach((item) => {
+    item.addEventListener("click", () => {
+      previousFocus = item;
+
+      modalTitle.textContent = item.dataset.title;
+      modalPrice.textContent = item.dataset.price;
+      modalDescription.textContent = item.dataset.description;
+
+      modalFallback.classList.add("hidden");
+      modalImage.classList.remove("hidden");
+      modalImage.src = item.dataset.image;
+      modalImage.alt = item.dataset.title;
+
+      modalImage.onerror = () => {
+        modalImage.classList.add("hidden");
+        modalFallback.classList.remove("hidden");
+      };
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    });
+  });
+
+  closeButton.addEventListener("click", closeMenuModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeMenuModal();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+      closeMenuModal();
+    }
+  });
+</script>
