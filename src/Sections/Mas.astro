@@ -1,28 +1,27 @@
-
 ---
 const favorites = [
   {
     name: "TACOS DE ARRACHERA",
     description: "Los más vendidos.",
-    image: "/images/favoritos/tacos-arrachera.jpg",
+   imagen: "/9.avif",
     position: "center",
   },
   {
     name: "TABLITAS DE FILETE",
     description: "Dos piezas. Una decisión fácil.",
-    image: "/images/favoritos/tablitas-filete.jpg",
+    imagen: "/9.avif",
     position: "center",
   },
   {
     name: "PAPA LA PATRONA",
     description: "Para cuando vienes con hambre.",
-    image: "/images/favoritos/papa-patrona.jpg",
+    imagen: "/9.avif",
     position: "center",
   },
   {
     name: "EL TACO TAPADO",
     description: "Una experiencia para compartir.",
-    image: "/images/favoritos/taco-tapado.jpg",
+     imagen: "/9.avif",
     position: "center",
   },
 ];
@@ -58,7 +57,7 @@ const favorites = [
 
           <!-- Imagen -->
           <img
-            src={item.image}
+            src={item.imagen}
             alt={item.name}
             loading="lazy"
             class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
