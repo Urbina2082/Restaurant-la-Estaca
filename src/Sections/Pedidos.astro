@@ -1,0 +1,438 @@
+
+---
+const categorias = [
+  { id: "carne", nombre: "Quiero carne", emoji: "🥩" },
+  { id: "tacos", nombre: "Quiero tacos", emoji: "🌮" },
+  { id: "botana", nombre: "Quiero botanear", emoji: "🧀" },
+  { id: "comer", nombre: "Algo llenador", emoji: "🍔" },
+];
+
+const platillos = [
+  // CARNE
+  {
+    nombre: "Cortadillo Estaca",
+    descripcion: "Arrachera acompañada de frijoles refritos, servida en un acerito.",
+    precio: 350,
+    categoria: "carne",
+    recomendado: true,
+  },
+  {
+    nombre: "Papa La Patrona",
+    descripcion: "Carne preparada con cebolla, morrón y queso asadero sobre una cama de papa.",
+    precio: 315,
+    categoria: "carne",
+    recomendado: true,
+  },
+  {
+    nombre: "Rib-Eye · medio kilo",
+    descripcion: "Acompañado de cebolla asada, elote y chilitos toreados.",
+    precio: 420,
+    categoria: "carne",
+    recomendado: false,
+  },
+
+  // TACOS
+  {
+    nombre: "Tacos de Arrachera",
+    descripcion: "Cuatro tacos con aguacate y zanahoria. Los más vendidos.",
+    precio: 235,
+    categoria: "tacos",
+    recomendado: true,
+  },
+  {
+    nombre: "Tacos de Sirloin",
+    descripcion: "Cuatro tacos con queso gratinado, cebolla asada y chile toreado.",
+    precio: 235,
+    categoria: "tacos",
+    recomendado: true,
+  },
+
+  // BOTANAS
+  {
+    nombre: "Queso Flameado",
+    descripcion: "Con chorizo y tortillas de maíz o harina. El clásico para empezar.",
+    precio: 240,
+    categoria: "botana",
+    recomendado: false,
+  },
+  {
+    nombre: "Botana Mixta",
+    descripcion: "Boneless, aros de cebolla, papas fritas y dedos de queso.",
+    precio: 320,
+    categoria: "botana",
+    recomendado: true,
+  },
+  {
+    nombre: "Nachos La Estaca",
+    descripcion: "Una preparación original de la casa. ¡Tienes que probarlos!",
+    precio: 240,
+    categoria: "botana",
+    recomendado: true,
+  },
+
+  // PARA COMER
+  {
+    nombre: "Hamburguesa La Clásica",
+    descripcion: "Carne Angus acompañada de papas fritas.",
+    precio: 165,
+    categoria: "comer",
+    recomendado: true,
+  },
+  {
+    nombre: "Torta La Estaca",
+    descripcion: "350 gramos de carne asada estilo Estaca en pan blanco.",
+    precio: 235,
+    categoria: "comer",
+    recomendado: true,
+  },
+];
+---
+
+<section class="pedidos-section" id="pedidos">
+  <div class="pedidos-container">
+
+    <!-- ENCABEZADO -->
+    <header class="pedidos-header">
+      <span class="pedidos-eyebrow">LO FAVORITO DE LA CASA</span>
+
+      <h2>
+        LOS MÁS
+        <span>PEDIDOS.</span>
+      </h2>
+
+      <p>
+        ¿Qué se te antoja? Elige tu favorito y descubre
+        algunas de las especialidades de La Estaca.
+      </p>
+    </header>
+
+    <!-- FILTROS -->
+    <nav class="pedidos-filtros" aria-label="Filtrar platillos">
+      {categorias.map((categoria, index) => (
+        <button
+          class:list={["filtro-btn", { activo: index === 0 }]}
+          data-filter={categoria.id}
+          aria-pressed={index === 0 ? "true" : "false"}
+        >
+          <span>{categoria.emoji}</span>
+          {categoria.nombre}
+        </button>
+      ))}
+    </nav>
+
+    <!-- PLATILLOS -->
+    <div class="pedidos-grid">
+      {platillos.map((platillo) => (
+        <article
+          class="platillo-card"
+          data-category={platillo.categoria}
+        >
+          <div class="platillo-top">
+            <h3>{platillo.nombre}</h3>
+            <span class="platillo-precio">
+              ${platillo.precio}
+            </span>
+          </div>
+
+          <p>{platillo.descripcion}</p>
+
+          {platillo.recomendado && (
+            <span class="platillo-recomendado">
+              RECOMENDACIÓN DE LA CASA
+            </span>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- BOTÓN -->
+    <div class="pedidos-footer">
+      <a href="#menu" class="pedidos-cta">
+        VER TODO EL MENÚ
+        <span>↗</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pedidos-section {
+    --verde: #008f43;
+    --crema: #f6f0df;
+    --fondo: #17120e;
+    --borde: rgba(246, 240, 223, 0.13);
+
+    background: var(--fondo);
+    color: var(--crema);
+    padding: 100px 24px;
+  }
+
+  .pedidos-container {
+    max-width: 970px;
+    margin: 0 auto;
+  }
+
+  /* ENCABEZADO */
+
+  .pedidos-header {
+    max-width: 550px;
+    margin-bottom: 35px;
+  }
+
+  .pedidos-eyebrow {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--verde);
+    margin-bottom: 12px;
+  }
+
+  .pedidos-header h2 {
+    font-size: clamp(48px, 7vw, 76px);
+    line-height: .83;
+    letter-spacing: -3px;
+    font-weight: 950;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: Impact, "Arial Narrow", sans-serif;
+  }
+
+  .pedidos-header h2 span {
+    display: block;
+    color: var(--verde);
+  }
+
+  .pedidos-header p {
+    color: rgba(246, 240, 223, .55);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 20px;
+  }
+
+  /* FILTROS */
+
+  .pedidos-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 38px 0 36px;
+  }
+
+  .filtro-btn {
+    border: 1px solid var(--borde);
+    background: rgba(246, 240, 223, .045);
+    color: rgba(246, 240, 223, .75);
+    border-radius: 50px;
+    padding: 12px 19px;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: .25s ease;
+    white-space: nowrap;
+  }
+
+  .filtro-btn span {
+    margin-right: 5px;
+  }
+
+  .filtro-btn:hover {
+    border-color: var(--verde);
+    color: white;
+  }
+
+  .filtro-btn.activo {
+    background: var(--verde);
+    border-color: var(--verde);
+    color: white;
+  }
+
+  /* GRID */
+
+  .pedidos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .platillo-card {
+    position: relative;
+    min-width: 0;
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    padding: 20px 19px;
+    background: rgba(255, 255, 255, .018);
+    transition: border-color .25s, background .25s;
+    animation: aparecer .3s ease both;
+  }
+
+  .platillo-card:hover {
+    border-color: rgba(0, 143, 67, .6);
+    background: rgba(0, 143, 67, .045);
+  }
+
+  .platillo-card[hidden] {
+    display: none;
+  }
+
+  .platillo-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .platillo-top h3 {
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 500;
+    margin: 0;
+    color: var(--crema);
+  }
+
+  .platillo-precio {
+    color: var(--verde);
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 19px;
+    white-space: nowrap;
+  }
+
+  .platillo-card p {
+    font-size: 11px;
+    line-height: 1.65;
+    color: rgba(246, 240, 223, .48);
+    margin: 8px 0 0;
+  }
+
+  .platillo-recomendado {
+    display: inline-block;
+    margin-top: 12px;
+    color: #14a85a;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  /* FOOTER */
+
+  .pedidos-footer {
+    margin-top: 36px;
+  }
+
+  .pedidos-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    background: var(--crema);
+    color: #201812;
+    border-radius: 50px;
+    padding: 16px 27px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: .25s ease;
+  }
+
+  .pedidos-cta:hover {
+    background: var(--verde);
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  .pedidos-cta span {
+    font-size: 17px;
+  }
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RESPONSIVE */
+
+  @media (max-width: 600px) {
+    .pedidos-section {
+      padding: 75px 19px;
+    }
+
+    .pedidos-header h2 {
+      font-size: 59px;
+    }
+
+    .pedidos-filtros {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin: 30px -19px 25px;
+      padding-left: 19px;
+      padding-right: 19px;
+      scrollbar-width: none;
+    }
+
+    .pedidos-filtros::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filtro-btn {
+      padding: 11px 15px;
+      font-size: 11px;
+    }
+
+    .pedidos-grid {
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .platillo-card {
+      padding: 18px 16px;
+      border-radius: 17px;
+    }
+
+    .platillo-top h3 {
+      font-size: 16px;
+    }
+
+    .pedidos-footer {
+      text-align: center;
+    }
+
+    .pedidos-cta {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const seccionesPedidos = document.querySelectorAll(".pedidos-section");
+
+  seccionesPedidos.forEach((seccion) => {
+    const botones = seccion.querySelectorAll(".filtro-btn");
+    const platillos = seccion.querySelectorAll(".platillo-card");
+
+    botones.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const categoria = boton.dataset.filter;
+
+        botones.forEach((btn) => {
+          const activo = btn === boton;
+          btn.classList.toggle("activo", activo);
+          btn.setAttribute("aria-pressed", String(activo));
+        });
+
+        platillos.forEach((platillo) => {
+          platillo.hidden = platillo.dataset.category !== categoria;
+        });
+      });
+    });
+  });
+</script>
